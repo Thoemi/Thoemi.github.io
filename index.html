@@ -1,8 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <title>Unihockey</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<a href="main.html">Main</a>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Unihockey</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="UHF.html">UHF</a></li>
+      <li><a href="tigers.html">Tigers</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <p id="demo"></p>
+  <script>
+    var e = document.getElementById("leagues");
+    var leagues = e.options[e.selectedIndex].value;
+
+    var url = 'https://api-v2.swissunihockey.ch/api/leagues?format=table?season=2016';
+    $.getJSON(url, function(data) {
+      if (undefined != data) {
+        console.log(data);
+        document.getElementById("demo").innerHTML = data;
+      }
+    });
+  </script>
+  <div class="row">
+    <div class="col-sm-4">
+      <select class="form-control" id="leagues">
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Gruppe
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Gruppe 1</a></li>
+          <li><a href="#">Gruppe 2</a></li>
+          <li><a href="#">Gruppe 3</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Team
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Tiger</a></li>
+          <li><a href="#">Winterthur</a></li>
+          <li><a href="#">Friborug</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
