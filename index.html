@@ -18,27 +18,12 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.html">Home</a></li>
-      <li><a href="UHF.html">UHF</a></li>
-      <li><a href="Tigers.html">Tigers</a></li>
-      <li><a href="Skorps.html">Skorps</a></li>
     </ul>
   </div>
 </nav>
 
 <div class="container">
   <p id="demo"></p>
-  <script>
-    var e = document.getElementById("leagues");
-    var leagues = e.options[e.selectedIndex].value;
-
-    var url = 'https://api-v2.swissunihockey.ch/api/leagues?format=table?season=2016';
-    $.getJSON(url, function(data) {
-      if (undefined != data) {
-        console.log(data);
-        document.getElementById("demo").innerHTML = data;
-      }
-    });
-  </script>
   <div class="row">
     <div class="col-sm-4">
       <select class="form-control" id="leagues">
@@ -49,9 +34,6 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Gruppe
           <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Gruppe 1</a></li>
-          <li><a href="#">Gruppe 2</a></li>
-          <li><a href="#">Gruppe 3</a></li>
         </ul>
       </div>
     </div>
@@ -60,9 +42,6 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Team
           <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Tiger</a></li>
-          <li><a href="#">Winterthur</a></li>
-          <li><a href="#">Friborug</a></li>
         </ul>
       </div>
     </div>
@@ -70,4 +49,16 @@
 </div>
 
 </body>
+<script>
+  var e = document.getElementById("leagues");
+  var leagues = e.options[e.selectedIndex].value;
+
+  var url = 'https://api-v2.swissunihockey.ch/api/leagues?format=table?season=2016';
+  $.getJSON(url, function(data) {
+    if (undefined != data) {
+      console.log(data);
+      document.getElementById("demo").innerHTML = data;
+    }
+  });
+</script>
 </html>
