@@ -1,94 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <title>Unihockey</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+}
+</style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Unihockey</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
-    </ul>
-  </div>
-</nav>
-<div>
-  <p id="demo"></p>
-</div>
-<div class="container">
-  <p id="demo"></p>
-  <div class="row">
-    <div class="col-sm-4">
-      <select class="form-control" id="leagues">
-      </select>
-    </div>
-    <div class="col-sm-4">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Gruppe
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-        </ul>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Team
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<p id="demo"></p>
 
-</body>
 <script>
-  var e = document.getElementById("leagues");
-  var leagues = e.options[e.selectedIndex].value;
-
-  var url = 'https://api-v2.swissunihockey.ch/api/leagues?format=table?season=2016';
-  $.getJSON(url, function(data) {
-    if (undefined != data) {
-      console.log(data);
-      document.getElementById("demo").innerHTML = data;
-    }
-  });
-  // Set the date we're counting down to
+// Set the date we're counting down to
 var countDownDate = new Date("Jul 5, 2017 12:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
 
-  // Get todays date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now an the count down date
-  var distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
 }, 1000);
 </script>
+
+</body>
 </html>
